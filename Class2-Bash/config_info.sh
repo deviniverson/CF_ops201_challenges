@@ -10,12 +10,10 @@
 # Main
 
 # Variable declaration
-ping_output=$(ping -c 3 www.google.com)
-
+config_info=$(ifconfig)
+echo $config_info
 # Sending ping_output sent to output.txt, with ">>" each interation is appended to previous file
-echo "$ping_output" >> output.txt
+echo "$config_info" >> config_output.txt
 
-# Insert space between outputs
-echo >> output.txt
 
 # End
