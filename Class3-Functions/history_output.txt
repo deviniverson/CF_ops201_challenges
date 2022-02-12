@@ -1,0 +1,2 @@
+devinive pts/1 192.168.0.177 Fri Feb 11 05:23 - 05:35 (00:11) devinive pts/9 192.168.0.177 Thu Feb 10 23:56 - 03:13 (03:17) devinive pts/0 192.168.0.135 Wed Feb 9 05:16 - 06:05 (00:49) wtmp begins Wed Feb 9 04:41:47 2022
+devinive pts/1 192.168.0.177 Fri Feb 11 05:23 - 05:35 (00:11) devinive pts/9 192.168.0.177 Thu Feb 10 23:56 - 03:13 (03:17) devinive pts/0 192.168.0.135 Wed Feb 9 05:16 - 06:05 (00:49) devinive tty1 Wed Feb 9 05:11 gone - no logout reboot system boot 5.4.0-99-generic Wed Feb 9 04:41 still running wtmp begins Wed Feb 9 04:41:47 2022
