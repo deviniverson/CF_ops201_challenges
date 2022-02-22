@@ -10,20 +10,24 @@
 # Main
 # print all active processes
 ps aux
-
+x=1
 # Menu
 menu(){
     # infinite while loop menu
-    while :
+    while [ $x == 1 ]
     do    
         read -p "Menu: Enter 1 to terminate processes, Enter 0 to exit application " user 
         
         if [ $user == 1 ]
         then
-            $(terminate-PID)
+            terminate-PID
         
-        else
+        elif [ $user == 0 ]
+        then    
             break
+
+        else
+            continue
         fi
     done
 
@@ -33,7 +37,13 @@ menu(){
 # function to terminate process with PID
 terminate-PID(){
     # user input, which process IDs to terminate
-    read -p "Enter PID # for process to be terminated, if more than one separate with a space : " input
+    read -p "Enter PID # for process to be terminated, if more than one separate with a space (Enter 0 to end script) : " input
+
+    # if statement to end script if 0 submitted
+    if [ $input == 0 ]
+    then
+        break
+    fi
 
     # for loop to terminate each PID inputed
     for i in ${input[@]}
