@@ -9,17 +9,43 @@
 
 # Main
 # print all active processes
-echo ps aux
+ps aux
 
-# user input, which process IDs to terminate
-read -p "Enter PID # for process to be terminated, if more than one seporate with a space :" input
+# Menu
+menu(){
+    # infinite while loop menu
+    while :
+    do    
+        read -p "Menu: Enter 1 to terminate processes, Enter 0 to exit application " user 
+        
+        if [ $user == 1 ]
+        then
+            $(terminate-PID)
+        
+        else
+            break
+        fi
+    done
 
-# for loop to terminate each PID inputed
-for i in ${input[@]}
-do
-    kill $i
-    # user informed that PID was terminated
-    echo "PID # $i has been terminated"
-done
-echo "Script has finished."
+}
+
+
+# function to terminate process with PID
+terminate-PID(){
+    # user input, which process IDs to terminate
+    read -p "Enter PID # for process to be terminated, if more than one seporate with a space : " input
+
+    # for loop to terminate each PID inputed
+    for i in ${input[@]}
+    do
+        kill $i
+        # user informed that PID was terminated
+        echo "PID # $i has been terminated"
+    done
+}
+
+# function called
+menu
+echo "Script Ended"
+
 # End
