@@ -33,7 +33,7 @@ menu(){
 # function to terminate process with PID
 terminate-PID(){
     # user input, which process IDs to terminate
-    read -p "Enter PID # for process to be terminated, if more than one seporate with a space : " input
+    read -p "Enter PID # for process to be terminated, if more than one separate with a space : " input
 
     # for loop to terminate each PID inputed
     for i in ${input[@]}
