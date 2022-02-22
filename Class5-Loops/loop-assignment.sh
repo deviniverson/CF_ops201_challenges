@@ -10,11 +10,11 @@
 # Main
 # print all active processes
 ps aux
-x=1
+
 # Menu
 menu(){
     # infinite while loop menu
-    while [ $x == 1 ]
+    while :
     do    
         read -p "Menu: Enter 1 to terminate processes, Enter 0 to exit application " user 
         
