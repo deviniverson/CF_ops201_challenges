@@ -8,9 +8,9 @@
 # Declaration of functions (if any): menu, create_dir, create_file, check_dir, check_file
 
 # Main
-# array of all attempts tried
+# array of all attempted file or directory names
 input_arr=()
-input_counter=0
+
 # function to check if file exists
 check_file(){
     if [[ -f $file ]]
@@ -73,25 +73,25 @@ create_dir(){
 }
 # menu function
 menu(){
-    while [ $input_counter -le 5 ]
+    while [ : ]
     do
-        read -p "Do you want to create a new file or directory? (f for file, d for directory, e to exit) " file-dir
+        read -p "Do you want to create a new file or directory? (f for file, d for directory, e to exit) " user_choice
         
-        if [ $file-dir == f ] || [ $file-dir == F ]
+        if [ $user_choice == f ] || [ $user_choice == F ]
         then
             read -p "What would you like to name your new file? (name must be unique from other files of your filesystem) " file
             input_arr+=($file)
-            ((input_counter++))
+            
             check_file
         
-        elif [ $file-dir == d ] || [ $file-dir == D ]
+        elif [ $user_choice == d ] || [ $user_choice == D ]
         then
             read -p "What would you like to name your new directory? (name must be unique from other directories of you filesystem) " dir
             input_arr+=($dir)
-            ((input_counter++))
+            
             check_dir
         
-        elif [ $file-dir == e ] || [ $file-dir == E ]
+        elif [ $user_choice == e ] || [ $user_choice == E ]
         then
             break
         
