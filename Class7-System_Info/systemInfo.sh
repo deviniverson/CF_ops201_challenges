@@ -12,6 +12,7 @@ cpu_arr=( $(lshw | grep -A 5 '*-cpu') )
 ram_arr=( $(lshw | grep -A 3 '*-memory') )
 display_arr=( $(lshw | grep -A 11 '*-display') )
 network_arr=( $(lshw | grep -A 15 '*-network') )
+#bios_arr=( $(dmidecode | grep -A 15 'BIOS Information') )
 
 # main fuction to run all other fuctions
 main(){
@@ -20,6 +21,7 @@ main(){
     ram_function
     display_function
     network_function
+    #bios_function
     echo " "
     echo "End Transmission"
     echo " "
@@ -131,6 +133,25 @@ network_function(){
     echo "  Capabilities: $network_capabilities"
     echo "  Configuration: $network_configuration"
     echo "  Resources: $network_resources"
+    echo " "
+
+}
+
+bios_function(){
+    bios_vender="${bios_arr[@]::}"
+    bios_version="${bios_arr[@]::}"
+    bios_releaseDate="${bios_arr[@]::}"
+    bios_address="${bios_arr[@]::}"
+    bios_runtime="${bios_arr[@]::}"
+    bios_romSize="${bios_arr[@]::}"
+
+    echo "BIOS Information"
+    echo "  Vender: $bios_vender"
+    echo "  Version: $bios_version"
+    echo "  Release Date: $bios_releaseDate"
+    echo "  Address: $bios_address"
+    echo "  Runtime: $bios_runtime"
+    echo "  ROM Size: $romSize"
 
 }
 
