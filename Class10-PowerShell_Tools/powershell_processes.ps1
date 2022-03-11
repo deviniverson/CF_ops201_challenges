@@ -3,7 +3,7 @@
 # Date of latest revision: 03/08/22
 # Purpose: Useful tools for use in powershell for future reference.
 
-# Function that prints all active processes ordered by highest CPU time comsuption at top
+# Function that prints all active processes ordered by highest CPU time consumption at top
 Function Sorted_CPU 
 {
     Get-Process | Sort-Object CPU -desc
@@ -31,10 +31,10 @@ Function OwaspExplorer
 }
 
 # Opens as many Internet explorers to finish loop, and goes to the website on each one
-Function LoopOwaspExplorer($loops)
+Function LoopOwaspExplorer #($loops)
 {
 
-    for ($i;$i -lt $loops;$i++) {
+    for ($i;$i -lt 10;$i++) {
         [system.Diagnostics.Process]:: Start("iexplore","https://owasp.org/www-project-top-ten/.")
     }
 }
@@ -45,16 +45,16 @@ Function ExitAllExplorers
     # audible alert to warn user that they are stopping a process
     for ($k = 0; $k -le 3; $k++){"`a"}
 
-    Get-Process iexplore | Stop-Process -Confirm -PassThru
+    Get-Process iexplore | Stop-Process -Force
 }
 
 # Closes out a process by its Process Identification Number 
-Function KillById($id) 
+Function KillById($eyed) 
 {
     # audible alert to warn user that they are stopping a process
     for ($j = 0; $j -le 2; $j++){"`a"}
 
-    Stop-Process -Id $id -Confirm -PassThru
+    stop-process -id $eyed -Force
 }
 
 # Main function to provide user experience and the ability to choose function to use
@@ -62,34 +62,41 @@ Function main
 {
     while ($val -ne 3)
     {
-        $res | Read-Host "Main Menu `n Enter the number of function to run: `n 1.Sorted_CPU `n 2.Sorted_Ids `n 3.TopFiveWorkingSets `n 4.OwaspExplorer `n 5.LoopOwaspExplorer `n 6.ExitAllExplorers `n 7.KillById `n 8.Exit `n Function #: "
+        $res = Read-Host "Main Menu `n Enter the number of function to run: `n 1.Sorted_CPU `n 2.Sorted_Ids `n 3.TopFiveWorkingSets `n 4.OwaspExplorer `n 5.TenOwaspExplorers `n 6.ExitAllExplorers `n 7.KillById `n 8.Exit `n Function #"
         
+
         if($res -eq 1)
         {
             $val++
+            write-host("`n")
             Sorted_CPU
         }
         elseif($res -eq 2)
         {
             $val++
+            write-host("`n")
             Sorted_Ids
         }
         elseif($res -eq 3)
         {
             $val++
+            write-host("`n")
             TopFiveWorkingSets
         }
         elseif($res -eq 4)
         {
             $val++
+            write-host("`n")
             OwaspExplorer
         }
         elseif($res -eq 5)
         {
             $val++
             write-host("`n")
-            $l | Read-Host "How many tabs of OwaspExplorer would you like? "
-            LoopOwaspExplorer($l)
+            # $loops = Read-Host "How many tabs of OwaspExplorer would you like? "
+            LoopOwaspExplorer #($loops)
+            # Giving the computer time to run this function
+            Start-Sleep -Seconds 5
         }
         elseif($res -eq 6)
         {
@@ -100,8 +107,8 @@ Function main
         {
             $val++
             write-host("`n")
-            $id | Read-Host "ID of process to be killed: "
-            KillById($id)
+            $eyed = Read-Host "ID of process to be killed: "
+            KillById($eyed)
         }
         elseif($res -eq 8)
         {
@@ -113,5 +120,6 @@ Function main
         }
     }
 
-    main
+
 }
+main
