@@ -42,6 +42,8 @@ Function LoopOwaspExplorer($loops)
 # Closes out all Internet Explorer tabs running on the local machine
 Function ExitAllExplorers 
 {
+    # audible alert to warn user that they are stopping a process
+    for ($k = 0; $k -le 3; $k++){"`a"}
 
     Get-Process iexplore | Stop-Process -Confirm -PassThru
 }
@@ -49,6 +51,8 @@ Function ExitAllExplorers
 # Closes out a process by its Process Identification Number 
 Function KillById($id) 
 {
+    # audible alert to warn user that they are stopping a process
+    for ($j = 0; $j -le 2; $j++){"`a"}
 
     Stop-Process -Id $id -Confirm -PassThru
 }
@@ -58,7 +62,7 @@ Function main
 {
     while ($val -ne 3)
     {
-        $res | Read-Host "Main Menu 'n Enter the number of function to run: 'n 1.Sorted_CPU 'n 2.Sorted_Ids 'n 3.TopFiveWorkingSets 'n 4.OwaspExplorer 'n 5.LoopOwaspExplorer 'n 6.ExitAllExplorers 'n 7.KillById 'n 8.Exit 'n Function #: "
+        $res | Read-Host "Main Menu `n Enter the number of function to run: `n 1.Sorted_CPU `n 2.Sorted_Ids `n 3.TopFiveWorkingSets `n 4.OwaspExplorer `n 5.LoopOwaspExplorer `n 6.ExitAllExplorers `n 7.KillById `n 8.Exit `n Function #: "
         
         if($res -eq 1)
         {
@@ -83,7 +87,7 @@ Function main
         elseif($res -eq 5)
         {
             $val++
-            write-host(" ")
+            write-host("`n")
             $l | Read-Host "How many tabs of OwaspExplorer would you like? "
             LoopOwaspExplorer($l)
         }
@@ -95,7 +99,7 @@ Function main
         elseif($res -eq 7)
         {
             $val++
-            write-host(" ")
+            write-host("`n")
             $id | Read-Host "ID of process to be killed: "
             KillById($id)
         }
@@ -109,5 +113,5 @@ Function main
         }
     }
 
-    write-host("Exiting Script")
+    main
 }
