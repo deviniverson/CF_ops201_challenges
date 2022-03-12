@@ -60,7 +60,7 @@ Function KillById($eyed)
 # Main function to provide user experience and the ability to choose function to use
 Function main 
 {
-    while ($val -ne 3)
+    while ($val -ne 5)
     {
         $res = Read-Host "Main Menu `n Enter the number of function to run: `n 1.Sorted_CPU `n 2.Sorted_Ids `n 3.TopFiveWorkingSets `n 4.OwaspExplorer `n 5.TenOwaspExplorers `n 6.ExitAllExplorers `n 7.KillById `n 8.Exit `n Function #"
         
