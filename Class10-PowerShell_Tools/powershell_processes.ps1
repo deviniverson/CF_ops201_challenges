@@ -20,7 +20,7 @@ Function Sorted_Ids
 Function TopFiveWorkingSets
 {
 
-    Get-Process | Sort-Object -Property WS -desc | Select -First 5
+    Get-Process | Sort-Object -Property WS -desc | Select-Object -First 5
 }
 
 # Opens Internet explorer and goes to website 
