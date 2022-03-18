@@ -2,7 +2,7 @@
 # Devin Iverson
 # 3/17/22
 # Name of Function: main
-# Name of Variable: Line
+# Name of Variables: Line, ipv4
 
 Function main
 {
@@ -13,11 +13,11 @@ Function main
     $ipv4 = ($Line | Select-String -Pattern "\d{1,3}(\.\d{1,3}){3}" -AllMatches).Matches.Value
 
     # Print out ipv4
-    Write-Output $ipv4
+    Write-Output $ipv4 
 
-    # testing if network adapter is sending and recieving packets correctly
-    Get-NetworkAdapterStatus
+    # Stretch Goal: I used pipes to hold the data in memory instead of sending it off to a txt file.
 
+    # Stretch Goal:
     # Testing IPv4 connection to the internet
     Test-Connection -TargetName www.codefellows.org -IPv4
 }
