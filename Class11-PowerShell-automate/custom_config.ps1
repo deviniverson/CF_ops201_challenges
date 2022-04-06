@@ -38,11 +38,11 @@ Function Hyper_On
 }
 
 # Disable SMBv1, an insecure protocol
-Function Disable-SMBv1
-{
-    Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -NoRestart
+#Function Disable-SMBv1
+#{
+#    Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol -NoRestart
 
-}
+#}
 
 # main function
 Function Main
@@ -52,7 +52,7 @@ Function Main
     Remote_Manage
     Remove-bloatware
     Hyper_On
-    Disable-SMBv1
+    #Disable-SMBv1
     # one restart at end to cover all bases
     Restart-Computer
 }
